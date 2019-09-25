@@ -61,14 +61,14 @@ module Earl
         # Logs *message* if `{{method}}?` returns true.
         def self.{{method}}(agent : Agent, message : String) : Nil
           return unless @@logger.{{method}}?
-          @@logger.send({Severity::{{constant.id}}, agent, Time.now, message})
+          @@logger.send({Severity::{{constant.id}}, agent, Time.local, message})
         end
 
         # Logs the message returned by the block if `{{method}}?` returns
         # true, otherwise the block is never invoked.
         def self.{{method}}(agent : Agent, &block : -> String) : Nil
           return unless @@logger.{{method}}?
-          @@logger.send({Severity::{{constant.id}}, agent, Time.now, yield})
+          @@logger.send({Severity::{{constant.id}}, agent, Time.local, yield})
         end
       {% end %}
     {% end %}
@@ -91,7 +91,7 @@ module Earl
 
     struct Log
       # :nodoc:
-      protected def initialize(@agent : Agent)
+      def initialize(@agent : Agent)
       end
 
       # Returns true if the current level is SILENT.

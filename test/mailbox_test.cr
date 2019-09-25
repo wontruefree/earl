@@ -9,7 +9,7 @@ private class Counter
   def initialize(@value = 0)
   end
 
-  def call
+  def call : Nil
     while increment = receive?
       @value += increment
     end

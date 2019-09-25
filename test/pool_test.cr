@@ -3,7 +3,7 @@ require "./test_helper"
 class Worker
   include Earl::Artist(Int32)
 
-  def call(message)
+  def call(message) : Nil
     log.info "received #{message}"
     sleep 0
     raise "chaos monkey" if rand(0..9) == 1

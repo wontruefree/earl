@@ -3,7 +3,7 @@ require "./test_helper"
 private class Pending
   include Earl::Artist(Int32)
 
-  def call(arg : Int32)
+  def call(arg : Int32) : Nil
   end
 end
 
@@ -13,7 +13,7 @@ private class Noop
   def initialize(@monkey = false)
   end
 
-  def call
+  def call : Nil
     return unless @monkey
     sleep 0
     raise "chaos"

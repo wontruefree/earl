@@ -14,7 +14,7 @@ module Earl
   # terminate.
   class Application < Supervisor
     # :nodoc:
-    protected def initialize
+    def initialize
       @atomic = Atomic(Int32).new(0)
 
       super

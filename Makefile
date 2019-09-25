@@ -10,6 +10,6 @@ doc: PHONY
 	cd doc && markdown ../SPEC.md > SPEC.html
 
 test: PHONY
-	$(CRYSTAL) run $(CRFLAGS) test/*_test.cr -- $(ARGS)
+	$(CRYSTAL) run $(CRFLAGS) test/*_test.cr --no-debug -- $(ARGS)
 
 PHONY:

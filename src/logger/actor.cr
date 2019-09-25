@@ -37,7 +37,7 @@ module Earl
       {% end %}
 
       def terminate
-        until mailbox.empty?
+        until mailbox.@capacity == 0
           Fiber.yield
         end
       end

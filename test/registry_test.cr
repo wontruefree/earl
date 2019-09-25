@@ -5,7 +5,7 @@ class Consumer
   include Earl::Logger
   include Earl::Mailbox(Int32)
 
-  def call
+  def call : Nil
     while message = receive?
       log.info "received: #{message}"
     end
@@ -27,7 +27,7 @@ class Producer
     @registry.unregister(agent)
   end
 
-  def call
+  def call : Nil
     0.upto(999) do |i|
       @registry.send(i)
     end

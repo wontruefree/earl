@@ -3,7 +3,7 @@ require "./test_helper"
 private class Noop
   include Earl::Agent
 
-  def call
+  def call : Nil
   end
 end
 
@@ -11,14 +11,14 @@ private class Loggy
   include Earl::Agent
   include Earl::Logger
 
-  def call
+  def call : Nil
   end
 end
 
 module Earl
   module Logger
     def self.pending_messages?
-      !@@logger.mailbox.empty?
+      !@@logger.mailbox.@capacity == 0
     end
   end
 

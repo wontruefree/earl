@@ -6,7 +6,7 @@ private class StatusAgent
   getter called = false
   getter terminated = false
 
-  def call
+  def call : Nil
     @called = true
 
     while running?
@@ -25,7 +25,7 @@ private class Noop
   getter called = false
   getter terminated = 0
 
-  def call
+  def call : Nil
     @called = true
   end
 

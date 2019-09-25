@@ -45,11 +45,15 @@ module Earl
       end
 
       @fiber = Fiber.current
-      Scheduler.reschedule
+      Crystal::Scheduler.reschedule
 
       until @workers.empty?
         Fiber.yield
       end
+    end
+
+    def call(messages : M) : Nil
+      call
     end
 
     # Recycles and restarts crashed and unexpectedly stopped agents.
@@ -76,7 +80,7 @@ module Earl
 
       if fiber = @fiber
         @fiber = nil
-        Scheduler.enqueue(fiber)
+        Crystal::Scheduler.enqueue(fiber)
       end
     end
   end
